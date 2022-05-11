@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movie Recommender</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    
+    </head>
+    <body>
+        <h1>🎞🎥📀Welcome to Özlem's magic movie recommender 🎞🎥📀</h1>
+        <img src="/static/logo2.svg" />
+        <p>Please rate movies</p>
+        <form action="/recommendations">
+ 
+    
+            </select>
+            {% for i in range(3) %}
+            <input
+                type="text"
+                name="title"
+                placeholder="Movie Title"
+                required
+                list="movies"
+            />
+            <input
+                type="range"
+                name="rating"
+                placeholder="Rating (1-5)"
+                min="1"
+                max="5"
+                required
+            />
+            <br /><br />
+
+        <br /><br />
+            {% endfor %}
+
+            <input
+            type="text"
+            name="method"
+            placeholder="Methods"
+            required
+            list="methods"
+        />
+
+            <button type="submit">Show recommendations</button>
+        </form>
+
+        <datalist id="movies">
+            {% for movie in movies %}
+            <option value="{{movie}}"></option>
+            {% endfor %}
+        </datalist>
+
+        <datalist id="methods">
+            {% for method in methods %}
+            <option value="{{method}}"></option>
+            {% endfor %}
+        </datalist>
+        
+
+    </body>
+</html>

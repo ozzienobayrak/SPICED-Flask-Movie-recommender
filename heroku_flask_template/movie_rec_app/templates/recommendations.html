@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movie Recommender</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <img src="/static/logo3.svg" />
+        <h1>Movies</h1>
+        <ul class="movies">
+            {% for rec in recs %}
+            <li>{{rec}}</li>
+            {% endfor %}
+        </ul>
+        <a href="/">Go back to main</a>
+        <div id="viz0"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+        <script>
+            // basic confetti animation
+            //confetti();
+
+            // sophisticated confetti animation
+            // https://www.kirilv.com/canvas-confetti/
+            var end = Date.now() + 15 * 1000;
+
+            // go Buckeyes!
+            var colors = ["#bb0000", "#ffffff"];
+
+            (function frame() {
+                confetti({
+                    particleCount: 2,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors,
+                });
+                confetti({
+                    particleCount: 2,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors,
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        </script>
+
+        <script src="https://unpkg.com/rough-viz@1.0.6"></script>
+        
+    </body>
+</html>
